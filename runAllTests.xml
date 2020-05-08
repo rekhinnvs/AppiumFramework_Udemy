@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Running Classes">
+    <listeners>
+        <listener class-name="utils.Listeners"/>
+    </listeners>
+    <test name="All test cases">
+        <classes>
+            <class name="apiDemos.ApiDemosAccessibilityTest"/>
+        </classes>
+
+    </test>
+</suite>

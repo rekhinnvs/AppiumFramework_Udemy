@@ -3,19 +3,27 @@ package apiDemos;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageFactoryApiDemos.ApiDemosHome;
 import utils.Base;
 
+import javax.validation.constraints.AssertTrue;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ApiDemosAccessibilityTest extends Base {
 
-    static AndroidDriver<AndroidElement> driver;
-     ApiDemosHome apiDemosHome;
+    private static AndroidDriver<AndroidElement> driver;
+    private ApiDemosHome apiDemosHome;
 
+    @BeforeClass
+    public void startAppium() {
+        Base.startAppiumServer();
+    }
 
     @Test
     public void init() throws IOException {
@@ -39,6 +47,17 @@ public class ApiDemosAccessibilityTest extends Base {
     public void launchAccessibility() {
         apiDemosHome = new ApiDemosHome(driver);
         apiDemosHome.accessibility.click();
+        driver.navigate().back();
 
+    }
+
+    @Test
+    public void testListneres() {
+        Assert.fail();
+    }
+
+    @AfterClass
+    public void stopAppium() {
+        Base.stopAppiumServer();
     }
 }
