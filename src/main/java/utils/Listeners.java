@@ -27,11 +27,11 @@ public class Listeners implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
         System.out.println("Test case failed");
 
-        try {
+/*        try {
             Base.getScreenshot();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

@@ -2,10 +2,12 @@
 <suite name="Running Classes">
     <listeners>
         <listener class-name="utils.Listeners"/>
+        <listener class-name="utils.ExtentReporter"/>
     </listeners>
     <test name="All test cases">
         <classes>
             <class name="apiDemos.ApiDemosAccessibilityTest"/>
+            <class name="apiDemos.TestForExtendReport"/>
         </classes>
 
     </test>
