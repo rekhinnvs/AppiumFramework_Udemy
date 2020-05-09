@@ -1,10 +1,11 @@
 package apiDemos;
 
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 public class TestForExtendReport {
-    @Test
+    @Test(description = "From login page")
     public void testLogin() {
         System.out.println("From login");
 
@@ -13,6 +14,7 @@ public class TestForExtendReport {
     @Test
     public void testUsers() {
         System.out.println("From Users");
+        throw new SkipException("This test case is skipped");
 
     }
 

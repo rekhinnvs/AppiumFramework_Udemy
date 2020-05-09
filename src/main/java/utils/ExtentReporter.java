@@ -23,17 +23,21 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
  
 public class ExtentReporter implements IReporter {
     private ExtentReports extent;
-    //ExtentHtmlReporter htmlReporter;
+    ExtentHtmlReporter htmlReporter;
  
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-    	
-        //htmlReporter = new ExtentHtmlReporter("./output/htmlreport.html");
-        //extent = new ExtentReports();
-        //extent.attachReporter(htmlReporter);
 
-        ExtentLoggerReporter logger = new ExtentLoggerReporter("./output/");
-        extent = new ExtentReports();
-        extent.attachReporter(logger);
+        if(true) {
+            htmlReporter = new ExtentHtmlReporter("./output/htmlreport.html");
+            extent = new ExtentReports();
+            extent.attachReporter(htmlReporter);
+        }
+        else {
+
+            ExtentLoggerReporter logger = new ExtentLoggerReporter("./output/");
+            extent = new ExtentReports();
+            extent.attachReporter(logger);
+        }
         
 
         for (ISuite suite : suites) {
@@ -58,14 +62,12 @@ public class ExtentReporter implements IReporter {
         if (tests.size() > 0) {
             for (ITestResult result : tests.getAllResults()) {
                 test = extent.createTest(result.getMethod().getMethodName());
- 
-                /*test.getTest(). = getTime(result.getStartMillis());
-                test.getTest().endedTime = getTime(result.getEndMillis());*/
+
  
                 for (String group : result.getMethod().getGroups())
                     test.assignCategory(group);
  
-                String message = "Test " + status.toString().toLowerCase() + "ed";
+                String message = result.getMethod().getDescription();
  
                 if (result.getThrowable() != null)
                     message = result.getThrowable().getMessage();
@@ -76,10 +78,5 @@ public class ExtentReporter implements IReporter {
             }
         }
     }
- 
-    private Date getTime(long millis) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(millis);
-        return calendar.getTime();        
-    }
+
 }
