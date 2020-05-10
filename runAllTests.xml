@@ -6,7 +6,7 @@
     </listeners>
     <test name="All test cases">
         <classes>
-            <class name="apiDemos.ApiDemosAccessibilityTest"/>
+            <!--<class name="apiDemos.ApiDemosAccessibilityTest"/> -->
             <class name="apiDemos.TestForExtendReport"/>
         </classes>
 

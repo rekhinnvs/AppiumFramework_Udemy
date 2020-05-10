@@ -2,6 +2,7 @@ package apiDemos;
 
 import org.testng.Assert;
 import org.testng.SkipException;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TestForExtendReport {
@@ -48,6 +49,23 @@ public class TestForExtendReport {
     public void testLogout() {
         System.out.println("From Logout");
 
+    }
+
+    @Test(dataProvider="inputData")
+    public void multiInputScenario(String user, String pwd) {
+        System.out.println("Username : "+user+ " Password : "+pwd);
+    }
+
+
+    @DataProvider(name = "inputData")
+    public Object[][] dataProvider() {
+
+        Object[][] object = {
+            {"rekhin","password_rekhin"},
+            {"rekhin","password_rekhin"}
+
+        };
+        return object;
     }
 
 }
